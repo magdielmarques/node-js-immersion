@@ -1,5 +1,6 @@
 // Sincronia de funcoes Javascript
-import { User } from './execucaoErrada.js';
+import { user1 } from './execucaoErrada.js';
+import { user2 } from './execucaoCorreta.js';
 
-let user = new User().returnUserData();
-console.log(user)
+user1()
+user2()
