@@ -18,3 +18,10 @@ user2()
 */
 
 import { obterUsuario } from './obterUsuario.js';
+import { obterTelefone } from './obterTelefone.js';
+
+const usuario = obterUsuario()
+const telefone = obterTelefone(usuario.id)
+
+console.log('usuario >', usuario)
+console.log('telefone >', telefone)
