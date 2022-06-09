@@ -1,8 +1,12 @@
-export function obterTelefone(idUsuario, callback) {
-  setTimeout(() => {
-    return callback(null, {
-      telefone: 99990000,
-      ddd: 67
-    })
-  }, 2000)
+export function obterTelefone(idUsuario) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      return resolve(
+        {
+        ddd: 67,
+        telefone: '99990-0000'
+        }
+      )
+    }, 2000)
+  })
 }
