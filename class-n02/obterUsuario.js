@@ -8,12 +8,12 @@ class Usuario {
   }
 }
 
-export function obterUsuario() {
+export function obterUsuario(callback) {
   setTimeout(() => {
     const user = new Usuario()
     user.id = 1;
     user.nome = 'Magdiel';
     user.dataNascimento = new Date();
-    return user;
+    return callback(null, user);
   }, 1000)
 }

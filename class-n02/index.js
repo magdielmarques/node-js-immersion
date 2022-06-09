@@ -20,8 +20,11 @@ user2()
 import { obterUsuario } from './obterUsuario.js';
 import { obterTelefone } from './obterTelefone.js';
 
-const usuario = obterUsuario()
-const telefone = obterTelefone(usuario.id)
+function resolverUsuario(erro, usuario) {
+  if (erro) console.log('erro -> ', erro)
+  else console.log('usuario -> ', usuario)
+}
 
-console.log('usuario >', usuario)
-console.log('telefone >', telefone)
+obterUsuario(resolverUsuario) 
+
+
