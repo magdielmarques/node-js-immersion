@@ -1,9 +1,14 @@
-export function obterEndereco(idUsuario, callback) {
-  setTimeout(() => {
-    return callback(
-      null, 
-      { endereco: 'Av. das Bandeirass',
-        idUsuario: idUsuario 
-      });
-  }, 2000)
+export function obterEndereco(idUsuario) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      return resolve(
+        { 
+          rua: 'Av. das Bandeiras',
+          numero: 581,
+          cidade: 'Cidade Vizinha',
+          estado: 'LOL',
+          idUsuario: idUsuario 
+        });
+    }, 2000)
+  })
 }
