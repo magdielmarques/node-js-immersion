@@ -10,10 +10,10 @@ class Usuario {
 
 export function obterUsuario(callback) {
   setTimeout(() => {
-    const user = new Usuario()
-    user.id = 1;
-    user.nome = 'Magdiel';
-    user.dataNascimento = new Date();
-    return callback(null, user);
+    const usuario = new Usuario()
+    usuario.id = 1;
+    usuario.nome = 'Magdiel';
+    usuario.dataNascimento = new Date();
+    return callback(null, usuario);
   }, 1000)
 }

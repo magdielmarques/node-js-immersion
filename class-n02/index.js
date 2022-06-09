@@ -19,15 +19,26 @@ user2()
 
 import { obterUsuario } from './obterUsuario.js';
 import { obterTelefone } from './obterTelefone.js';
+import { obterEndereco } from './obterEndereco.js';
 
-function resolverUsuario(erro, usuario) {
-  if (erro) console.log('erro -> ', erro)
-  else console.log('usuario -> ', usuario)
-}
-
-obterUsuario(resolverUsuario) 
-
-obterTelefone(1, (erro, telefone) => {
-  if (erro) console.log('erro -> ', erro)
-  else console.log('telefone -> ', telefone)
+obterUsuario((erro, usuario) => {
+    if (erro) {
+      console.log('erro usuario -> ', erro) 
+      return;
+    } 
+    console.log(usuario)
+    obterTelefone(usuario.id, (erro, telefone) => {
+      if (erro) {
+        console.log('erro no telefone -> ', erro) 
+        return;
+      } 
+    console.log(telefone)
+    }),
+    obterEndereco(usuario.id, (erro, endereco) => {
+      if (erro) {
+        console.log('erro no endereco -> ', erro) 
+        return;
+      } 
+    console.log(endereco)
+    })
 })
