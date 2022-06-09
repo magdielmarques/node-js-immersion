@@ -8,12 +8,14 @@ class Usuario {
   }
 }
 
-export function obterUsuario(callback) {
-  setTimeout(() => {
-    const usuario = new Usuario()
-    usuario.id = 1;
-    usuario.nome = 'Magdiel';
-    usuario.dataNascimento = new Date();
-    return callback(null, usuario);
-  }, 1000)
+export function obterUsuario() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const usuario = new Usuario()
+      usuario.id = 1;
+      usuario.nome = 'Magdiel';
+      usuario.dataNascimento = new Date();
+      return resolve(usuario);
+    }, 1000)
+  })
 }
