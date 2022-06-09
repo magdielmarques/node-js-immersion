@@ -27,4 +27,7 @@ function resolverUsuario(erro, usuario) {
 
 obterUsuario(resolverUsuario) 
 
-
+obterTelefone(1, (erro, telefone) => {
+  if (erro) console.log('erro -> ', erro)
+  else console.log('telefone -> ', telefone)
+})
