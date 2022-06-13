@@ -10,4 +10,8 @@ myEmitter.on(nameOfEvent, (click) => {
   console.log('Some new click', click)
 })
 
-myEmitter.emit(nameOfEvent, 'in new buttom')
+// myEmitter.emit(nameOfEvent, 'in new buttom')
+let count = 0;
+setInterval(() => {
+  myEmitter.emit(nameOfEvent, `in new buttom blue number ${count++}.`)
+}, 1000)
