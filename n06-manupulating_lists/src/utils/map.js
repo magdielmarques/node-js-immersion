@@ -4,13 +4,11 @@ const main = async () => {
   try {
     const result = await service.getPeople('a')
 
-    const names = []
-
-    console.time('tempo de execucao no FOREACH')
-    result.results.forEach((eachResult) => {
-      names.push(eachResult.name)
+    console.time('tempo de execucao no MAP')
+    const names = result.results.map((eachResult) => {
+      return eachResult.name
     })
-    console.timeEnd('tempo de execucao no FOREACH')
+    console.timeEnd('tempo de execucao no MAP')
 
     console.log('names -> ', names)
   } catch (error) {
