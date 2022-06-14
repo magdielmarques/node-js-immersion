@@ -1,5 +1,7 @@
 // listing with higher order functions
 // test of performance
-const forTest = require('../utils/for.js')
+const funcFor = require('../utils/for.js')
+const funcForIn = require('../utils/forIn.js')
 
-forTest.main()
+funcFor.main()
+funcForIn.main()
