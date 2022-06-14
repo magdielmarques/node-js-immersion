@@ -8,11 +8,11 @@ const getPeople = async (name) => {
   return response.data
 }
 
+module.exports = {
+  getPeople
+}
+
 // getPeople('r2')
 //   .then((result) => console.log(result))
 //   .catch((err) => console.error(err))
 //   .finally(() => console.log('Busca finalizada!'))
-
-module.exports = {
-  getPeople
-}
