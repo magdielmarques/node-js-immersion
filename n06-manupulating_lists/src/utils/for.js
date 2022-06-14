@@ -1,4 +1,4 @@
-const service = require('./service.js')
+const service = require('../data/service.js')
 
 const main = async () => {
   try {
@@ -6,6 +6,8 @@ const main = async () => {
     console.log(result)
   } catch (error) {
     console.error('Algo nao saio como espera.', error)
+  } finally {
+    console.log('Finalizando execucao!')
   }
 }
 
