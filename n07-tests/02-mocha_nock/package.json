@@ -1,0 +1,15 @@
+{
+  "name": "02-mocha_nock",
+  "version": "1.0.0",
+  "description": "A simple project using tools mocha and nock to simulate development by test",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha src/test.js",
+    "start": "node ."
+  },
+  "author": "Magdiel Marques Macedo",
+  "license": "ISC",
+  "devDependencies": {
+    "mocha": "^10.0.0"
+  }
+}
