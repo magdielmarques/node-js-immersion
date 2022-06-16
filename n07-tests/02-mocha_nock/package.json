@@ -4,12 +4,15 @@
   "description": "A simple project using tools mocha and nock to simulate development by test",
   "main": "index.js",
   "scripts": {
-    "test": "mocha src/test.js",
-    "start": "node ."
+    "test": "mocha src/**",
+    "start": "node src/."
   },
   "author": "Magdiel Marques Macedo",
   "license": "ISC",
   "devDependencies": {
     "mocha": "^10.0.0"
+  },
+  "dependencies": {
+    "axios": "^0.27.2"
   }
 }
