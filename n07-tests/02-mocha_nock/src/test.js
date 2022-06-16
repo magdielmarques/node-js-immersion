@@ -46,4 +46,4 @@ describe('Search in Star Wars API', () => {
 })
 
 // before nock fw: ✔ should find correctly the array (1374ms)
-// after nock fw:  ✔ should find correctly the array
+// after nock fw:  ✔ should find correctly the array (21ms)
