@@ -16,8 +16,8 @@ const getPeople = async (name) => {
 
 const mapPeople = (item) => {
   return { 
-    name: item.name.toLowerCase(), 
-    height: item.height.toLowerCase()
+    name: item.name, 
+    height: item.height
   }
 }
 
