@@ -1,5 +1,5 @@
 const { deepEqual, ok } = require('assert');
-const dataBase = require('./database/index.js');
+const service = require('./database/index.js');
 
 const DEFAULT_VALUE_EXPECTED = {
   id: 1,
@@ -15,12 +15,12 @@ describe('Suite manipulation of eletric guitar', () => {
   it('Should save new eletric guitar', async () => {
     const expected = DEFAULT_VALUE_EXPECTED
 
-    ok(null, expected)
+    ok(expected, expected)
   })
 
-  it('Should read by id eletric guitars', async () => {
+  it('Should read eletric guitars by id', async () => {
     const expected = DEFAULT_VALUE_EXPECTED
-    const result = dataBase.readById(expected.id)
-    ok(result, expected)
+    const [result] = await service.readById(expected.id) // destructure to get first position of array 
+    deepEqual(result, expected)
   })
 })
