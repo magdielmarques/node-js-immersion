@@ -21,7 +21,7 @@ const main = async () => {
     const height = results.map(item => parseInt(item.height))
     console.log('height - ', height);
 
-    const addedHeight = height.myReduce((oldValue, nextValue) => oldValue + nextValue)
+    const addedHeight = height.myReduce((oldValue, newValue) => oldValue + newValue)
     console.log('addedHeight - ', addedHeight);
     
     console.timeEnd('tempo de execucao no MY REDUCE')
