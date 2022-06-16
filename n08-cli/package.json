@@ -1,0 +1,15 @@
+{
+  "name": "n08-cli",
+  "version": "1.0.0",
+  "description": "A simpple project that provide CRUD of electric guitar using CLI",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha src/**",
+    "start": "node src/."
+  },
+  "author": "Magdiel Marques Macedo",
+  "license": "ISC",
+  "devDependencies": {
+    "mocha": "^10.0.0"
+  }
+}
