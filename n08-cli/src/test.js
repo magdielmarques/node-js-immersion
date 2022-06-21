@@ -8,14 +8,19 @@ const DEFAULT_VALUE_EXPECTED = {
 }
 
 describe('Suite manipulation of eletric guitar', () => {
-  before(() => {
-
+  before(async () => {
+    await service.create(DEFAULT_VALUE_EXPECTED)
   })
 
-  it('Should save new eletric guitar', async () => {
-    const expected = DEFAULT_VALUE_EXPECTED
+  it('Should create new eletric guitar', async () => {
+    const expected = {
+      ...DEFAULT_VALUE_EXPECTED,
+      id: 12431
+    }
+    const result = await service.create(expected)
+    const [actual] = await service.readById(expected.id)
 
-    ok(expected, expected)
+    deepEqual(actual, expected)
   })
 
   it('Should read eletric guitars by id', async () => {

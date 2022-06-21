@@ -1,4 +1,4 @@
-const { readFile } = require('fs'); // read the file
+const { readFile, writeFile } = require('fs'); // read the file
 const { promisify } = require('util'); // transform the callback function to promise
 
 /**
@@ -7,6 +7,7 @@ const { promisify } = require('util'); // transform the callback function to pro
  */
 
 const readFileAsync = promisify(readFile);
+const writeFileAsync = promisify(writeFile);
 class Database {
   constructor(FILE_PATH) {
     this.FILE_PATH = FILE_PATH
@@ -17,8 +18,27 @@ class Database {
     const result = await readFileAsync(this.FILE_PATH, 'utf8')
     return JSON.parse(result.toString())
   }
-  create() {
-    
+
+  async writeData(data) {
+    await writeFileAsync(this.FILE_PATH, JSON.stringify(data))
+    return true
+  }
+
+  async create(guitar) {
+    const data = await this.getData();
+    const id = Date.now()
+
+    const guitarWithNewId = {
+      id,
+      ...guitar
+    }
+
+    const finalData = [
+      ...data,
+      guitarWithNewId
+    ]
+    const result = await this.writeData(finalData)
+    return result
   }
   async readById(id) {
     const result = await this.getData()
