@@ -58,6 +58,23 @@ class Database {
     data.splice(index, 1)
     return await this.writeData(data)
   }
+
+  async update(id, value) {
+    const data = await this.getData()
+
+    const guitar = data.filter((item => item.id = id))
+
+    const updatedGuitar = {
+      ...guitar,
+      ...value
+    }
+
+    updatedData = {
+      ...data,
+      updatedGuitar
+    }
+    return await this.writeData(updatedData)
+  }
 }
 
 module.exports = new Database('src/database/electric_guitar.json');
