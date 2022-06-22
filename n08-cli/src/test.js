@@ -42,6 +42,21 @@ describe('Suite manipulation of eletric guitar', () => {
   })
 
   it('Should update by id eletric guitar', async () => {
+    const expected = {
+      ...DEFAULT_VALUE_UPDATE,
+      name: 'Takamine',
+      color: 'blue'
+    }
 
+    const newValue = {
+      name: 'Takamine',
+      color: 'blue'
+    }
+    
+    await this.service.update(DEFAULT_VALUE_UPDATE.id, newValue )
+
+    const result = await this.service.readById(DEFAULT_VALUE_UPDATE.id)
+    
+    deepEqual(result, expected)
   })
 })
