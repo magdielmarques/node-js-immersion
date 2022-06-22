@@ -29,7 +29,7 @@ describe('Suite manipulation of eletric guitar', () => {
     deepEqual(result, expected)
   })
 
-  it.only('Should delete by id eletric guitar or delete all', async () => {
+  it('Should delete by id eletric guitar or delete all', async () => {
     const expected = true
     const result = await service.delete()
     deepEqual(result, expected) 
