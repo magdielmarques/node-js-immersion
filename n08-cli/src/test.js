@@ -7,6 +7,12 @@ const DEFAULT_VALUE_EXPECTED = {
   color: 'black'
 }
 
+const DEFAULT_VALUE_UPDATE = {
+  id: 2, 
+  name: 'Strinberg', 
+  color: 'red'
+}
+
 describe('Suite manipulation of eletric guitar', () => {
   before(async () => {
     await service.create(DEFAULT_VALUE_EXPECTED)
@@ -31,7 +37,11 @@ describe('Suite manipulation of eletric guitar', () => {
 
   it('Should delete by id eletric guitar or delete all', async () => {
     const expected = true
-    const result = await service.delete()
+    const result = await service.delete(1)
     deepEqual(result, expected) 
+  })
+
+  it('Should update by id eletric guitar', async () => {
+
   })
 })
