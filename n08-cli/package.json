@@ -4,7 +4,7 @@
   "description": "A simpple project that provide CRUD of electric guitar using CLI",
   "main": "index.js",
   "scripts": {
-    "test": "mocha src/**",
+    "test": "mocha -w src/**",
     "start": "node src/."
   },
   "author": "Magdiel Marques Macedo",

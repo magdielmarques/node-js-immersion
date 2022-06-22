@@ -26,7 +26,7 @@ class Database {
 
   async create(guitar) {
     const data = await this.getData();
-    const id = Date.now()
+    const id = data.id < 2 ? 1 : Date.now()
 
     const guitarWithNewId = {
       id,
@@ -40,9 +40,23 @@ class Database {
     const result = await this.writeData(finalData)
     return result
   }
+
   async readById(id) {
     const result = await this.getData()
     return result.filter((item) => id ? item.id === id : true) // will return every guitars if doesn't exist id
+  }
+
+  async delete(id) {
+    if (!id) 
+      return await this.writeData([])
+
+    const data = await this.getData()
+    
+    const index = data.findIndex(item => item.id === parseInt(id))
+    if (index === -1) throw Error('The guitar does not exist.')
+
+    data.splice(index, 1)
+    return await this.writeData(data)
   }
 }
 
