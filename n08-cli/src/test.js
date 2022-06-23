@@ -16,13 +16,15 @@ const DEFAULT_VALUE_UPDATE = {
 describe('Suite manipulation of eletric guitar', () => {
   before(async () => {
     await service.create(DEFAULT_VALUE_EXPECTED)
+    await service.create(DEFAULT_VALUE_UPDATE)
   })
 
   it('Should create new eletric guitar', async () => {
-    const expected = {
-      ...DEFAULT_VALUE_EXPECTED,
-      id: 12431
-    }
+    // const expected = {
+    //   ...DEFAULT_VALUE_EXPECTED,
+    //   id: 12431
+    // }
+    const expected = DEFAULT_VALUE_EXPECTED
     const result = await service.create(expected)
     const [actual] = await service.readById(expected.id)
 
@@ -35,13 +37,7 @@ describe('Suite manipulation of eletric guitar', () => {
     deepEqual(result, expected)
   })
 
-  it('Should delete by id eletric guitar or delete all', async () => {
-    const expected = true
-    const result = await service.delete(1)
-    deepEqual(result, expected) 
-  })
-
-  it('Should update by id eletric guitar', async () => {
+  it.only('Should update by id eletric guitar', async () => {
     const expected = {
       ...DEFAULT_VALUE_UPDATE,
       name: 'Takamine',
@@ -49,14 +45,19 @@ describe('Suite manipulation of eletric guitar', () => {
     }
 
     const newValue = {
-      name: 'Takamine',
-      color: 'blue'
+      name: "Takamine",
+      color: "blue"
     }
     
-    await this.service.update(DEFAULT_VALUE_UPDATE.id, newValue )
-
-    const result = await this.service.readById(DEFAULT_VALUE_UPDATE.id)
+    await service.update(DEFAULT_VALUE_UPDATE.id, newValue)
+    const [result] = await service.readById(expected.id)
     
     deepEqual(result, expected)
+  })
+
+  it('Should delete by id eletric guitar or delete all', async () => {
+    const expected = true
+    const result = await service.delete(1)
+    deepEqual(result, expected) 
   })
 })

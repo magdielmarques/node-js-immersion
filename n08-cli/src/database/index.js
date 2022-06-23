@@ -60,20 +60,21 @@ class Database {
   }
 
   async update(id, value) {
+    if (!id || !value) return
+
     const data = await this.getData()
-
-    const guitar = data.filter((item => item.id = id))
-
-    const updatedGuitar = {
-      ...guitar,
+    const index = data.findIndex(item => item.id === parseInt(id))
+    
+    if (!index) return
+    
+    const updatedItem = {
+      ...data[index],
       ...value
     }
 
-    updatedData = {
-      ...data,
-      updatedGuitar
-    }
-    return await this.writeData(updatedData)
+    data.splice(index, 1)
+
+    return await this.writeData([...data, updatedItem])
   }
 }
 
