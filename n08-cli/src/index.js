@@ -1,23 +1,30 @@
-const Commander = require('commander');
+const { Command } = require('commander');
 const service = require('./database/index');
+const Guitar = require('./guitar');
 
-const main = async () => {
-  Commander
+async function main () {
+  const program = new Command()
+  program
     .version('v1 project by Magdiel') // set version og my project
       .option('-N, --name [value]', "Name of eletric guitar") // option to insert value
       .option('-L, --color [value', "Name of color") // option to insert value
-
       .option('-C, --create', "Create an new eletric guitar") // option of CRUD
-
-    .parse(process.argv) // get everything typed of user
     
+    program.parse(process.argv) // get everything typed of user
+    
+    const options = program.opts();
+    const guitar = new Guitar(options)
+
     try {
-      if(Commander.createOption) {
-        console.log(Commander);
-        // const result = await service.create()
+      if(options.create){
+        const result = await service.create(guitar)
+
+        if (!result) console.error('Error. Guitar not saved.')
+        else console.log('Success. New guitar saved.')
       }
+
     } catch (error) {
-      throw new Error(error)
+      throw new Error('Error, please try again.', error)
     }
 }
 
