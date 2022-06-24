@@ -26,17 +26,18 @@ class Database {
 
   async create(guitar) {
     const data = await this.getData();
-    const id = data.id < 2 ? 1 : Date.now()
+    const id = Date.now()
 
     const guitarWithNewId = {
-      id,
-      ...guitar
+      ...guitar,
+      id
     }
 
     const finalData = [
       ...data,
       guitarWithNewId
     ]
+
     const result = await this.writeData(finalData)
     return result
   }
