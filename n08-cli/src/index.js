@@ -12,6 +12,7 @@ async function main () {
 
       .option('-C, --create', "Create an new eletric guitar") // option of CRUD
       .option('-R, --read', "Read eletric all guitar") // option of CRUD
+      .option('-U, --update [value]', "Update eletric guitar") // option of CRUD
       .option('-D, --delete', "Delete eletric guitar by ID") // option of CRUD
     
     program.parse(process.argv) // get everything typed of user
@@ -47,6 +48,20 @@ async function main () {
           return
         }
         console.log('Success. Guitar deleted.')
+      }
+
+      if(options.update){
+        const idGuitar = parseInt(options.update)
+        delete guitar.id
+        const data = JSON.stringify(guitar)
+        const guitarToUpdate = JSON.parse(data)
+        const result = await service.update(idGuitar, guitarToUpdate)
+
+        if(!result) {
+          console.error('Error. Guitar not updated.')
+          return
+        }
+        console.table(guitar)
       }
 
     } catch (error) {
