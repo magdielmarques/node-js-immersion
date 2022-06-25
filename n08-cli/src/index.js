@@ -23,21 +23,30 @@ async function main () {
       if(options.create){
         const result = await service.create(guitar)
 
-        if (!result) console.error('Error. Guitar not saved.')
-        else console.log('Success. New guitar saved.')
+        if (!result) {
+          console.error('Error. Guitar not saved.')
+          return
+        }
+        console.log('Success. New guitar saved.')
       }
 
       if(options.read){
         const result = await service.readById(guitar.id)
         
-        if (result) console.table(result)
-        else console.error('Error. Guitar not found.')
+        if (!result) {
+          console.error('Error. Guitar not found.')
+          return
+        } 
+        console.table(result) 
       }
 
       if(options.delete){
         const result = await service.delete(guitar.id)
-        if (!result) console.error('Error. Guitar not deleted.')
-        else console.log('Success. Guitar deleted.')
+        if (!result) {
+          console.error('Error. Guitar not deleted.')
+          return
+        }
+        console.log('Success. Guitar deleted.')
       }
 
     } catch (error) {

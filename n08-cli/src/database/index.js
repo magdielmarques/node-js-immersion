@@ -44,7 +44,7 @@ class Database {
 
   async readById(id) {
     const result = await this.getData()
-    return result.filter((item) => id ? item.id === id : true) // will return every guitars if doesn't exist id
+    return result.filter((item) => id ? item.id === parseInt(id) : true) // will return every guitars if doesn't exist id
   }
 
   async delete(id) {
