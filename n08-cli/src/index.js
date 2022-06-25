@@ -7,9 +7,12 @@ async function main () {
   program
     .version('v1 project by Magdiel') // set version og my project
       .option('-N, --name [value]', "Name of eletric guitar") // option to insert value
-      .option('-L, --color [value', "Name of color") // option to insert value
+      .option('-L, --color [value]', "Name of color") // option to insert value
+      .option('-I, --id [value]', "ID of guitar") // option to insert value
+
       .option('-C, --create', "Create an new eletric guitar") // option of CRUD
       .option('-R, --read', "Read eletric all guitar") // option of CRUD
+      .option('-D, --delete', "Delete eletric guitar by ID") // option of CRUD
     
     program.parse(process.argv) // get everything typed of user
     
@@ -29,6 +32,12 @@ async function main () {
         
         if (result) console.table(result)
         else console.error('Error. Guitar not found.')
+      }
+
+      if(options.delete){
+        const result = await service.delete(guitar.id)
+        if (!result) console.error('Error. Guitar not deleted.')
+        else console.log('Success. Guitar deleted.')
       }
 
     } catch (error) {
