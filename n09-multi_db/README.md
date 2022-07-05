@@ -9,3 +9,5 @@ Commands (macOS Monterey): \
     docker run --name adminer --link postgres-estudo:postgres -p 8080:8080 adminer
 
   ## ---- mongodb
+    docker run --name mongodb-estudo -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=senhadmin -d mongo:4
+    docker run --name mongodb-adminer -p 3000:3000 --link mongodb-estudo:mongodb -d mongoclient/mongoclient
