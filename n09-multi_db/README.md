@@ -11,3 +11,4 @@ Commands (macOS Monterey): \
   ## ---- mongodb
     docker run --name mongodb-estudo -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=senhadmin -d mongo:4
     docker run --name mongodb-adminer -p 3000:3000 --link mongodb-estudo:mongodb -d mongoclient/mongoclient
+    docker exec -it mongodb-estudo mongo --host localhost -u admin -p senhadmin --authenticationDatabase admin --eval  "db.getSiblingDB('estudo').createUser({user: 'magdielmarques', pwd: 'minhasenha', roles: [{role: 'readWrite', db: 'estudo'}]})"
