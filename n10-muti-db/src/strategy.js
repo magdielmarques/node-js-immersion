@@ -1,3 +1,5 @@
 class NotImplementedException extends Erros {
-  //  something
+  constructor() {
+    super('New message added with extends class: Not Implemented Exception!')
+  }
 } 

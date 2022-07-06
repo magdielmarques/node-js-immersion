@@ -18,7 +18,7 @@ services:
     environment: 
       MONGO_INITDB_ROOT_USERNAME: "root"
       MONGO_INITDB_ROOT_PASSWORD: "root"
-      MONGO_INITDB_DATABASE: "heroes"
+      MONGO_INITDB_DATABASE: "guitar"
     networks:
       - mongonet
     
