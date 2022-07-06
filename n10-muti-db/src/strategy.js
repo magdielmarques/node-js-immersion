@@ -23,3 +23,8 @@ class ICrud {
     throw new NotImplementedException()
   }
 }
+
+// fake implementation of interface
+class ContextStrategy extends ICrud { // strategy of database
+
+}
