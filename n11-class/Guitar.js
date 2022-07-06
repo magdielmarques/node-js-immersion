@@ -5,8 +5,6 @@ class Guitar {
 
   set brand(value) {
     this._logValueUppercase(value)
-    // this._brand = value.toUpperCase()
-    // return console.log(this._brand);
   }
 
   get brand() {
@@ -14,7 +12,8 @@ class Guitar {
   }
 
   _logValueUppercase(value) {
-    return console.log(value.toUpperCase());
+    console.log(value.toUpperCase());
+    return value
   }
 
   play() {
@@ -22,6 +21,11 @@ class Guitar {
   }
 }
 
-const guitar = new Guitar()
-guitar.brand = 'fender' 
-// guitar.brand 
+class Player extends Guitar {
+  constructor(name, brand) {
+    super(brand)
+    this._name = this._logValueUppercase(name)
+  }
+}
+
+const player = new Player('Magdiel')
