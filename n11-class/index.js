@@ -7,7 +7,9 @@ class Person {
 
   set name(value) { // can get parameter
     // this._name = value
-    console.log(`What happens when you try put some value into that atribute ->`, value)
+    // console.log(`What happens when you try put some value into that atribute ->`, value)
+    this._name = value.toUpperCase() // example
+    return console.log(this._name);
   }
 
   set age(value) {
@@ -25,7 +27,7 @@ class Person {
 
 const person = new Person()
 // example using set
-// person.name = 'Magdiel'
+person.name = 'Magdiel'
 // person.age = 24
 
 // example using get
