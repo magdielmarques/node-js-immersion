@@ -1,4 +1,4 @@
-class NotImplementedException extends Erro {
+class NotImplementedException extends Error {
   constructor() {
     super('New message added with extends class: Not Implemented Exception!')
   }
@@ -24,18 +24,18 @@ class ICrud {
 }
 
 // extended class with data base strategy
-class MongoBD extends ICrud { // will get an CRUD
+class MongoBD extends ICrud { // classes concretas 
   constructor () {
     super()
   }
 
   create(item) {
-    console.log('O item foi salvo em MongoBD');
+    console.log('O item foi salvo em MongoBD', item);
   }
 }
 
 // fake implementation of interface
-class ContextStrategy { // strategy of database
+class ContextStrategy { // strategy of database | classe abstrata
   constructor(strategy) {
     this._database = strategy
   }
@@ -53,3 +53,10 @@ class ContextStrategy { // strategy of database
     return this._database.delete(id)
   }
 }
+
+
+const contextMongo = new ContextStrategy(new MongoBD())
+contextMongo.create('Teste')
+contextMongo.read()
+
+// new ICrud().create()
