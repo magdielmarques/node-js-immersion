@@ -1,0 +1,11 @@
+{
+  "name": "multi-database",
+  "version": "1.0.0",
+  "description": "A simple project to introduce strategy design patterns",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Magdiel Marques Macedo",
+  "license": "ISC"
+}
