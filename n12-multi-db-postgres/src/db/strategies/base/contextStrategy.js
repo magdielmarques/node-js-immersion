@@ -18,10 +18,6 @@ class ContextStrategy {
   delete(id) {
     return this._database.delete(id)
   }
-
-  isConected() {
-    return this._database.isConected()
-  }
 }
 
 module.exports = ContextStrategy
