@@ -4,7 +4,8 @@
   "description": "A simple project to introduce strategy design patterns",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/ ./index.js"
   },
   "author": "Magdiel Marques Macedo",
   "license": "ISC"
