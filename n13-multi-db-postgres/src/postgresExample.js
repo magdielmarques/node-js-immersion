@@ -1,5 +1,4 @@
-// instalar orm -> npm i sequelize 
-// installar driver do banco pos -> npm i pg-hstore
+// instalar orm e driver do banco
 // npm install sequelize sequelize-cli pg pg-hstore
 
 const Sequelize = require('sequelize')
@@ -38,9 +37,16 @@ async function main() {
     freezeTableName: false,
     timestamps: false // para nao criar automaticamente as propriedades de created at, etc
   })
-  await Guitars.sync()
-
-  const result = await Guitars.findAll({ raw: true})
+  await Guitars.sync() // sincroniza
+  await Guitars.create({
+    brand: 'Chinesa',
+    color: 'blue'
+  })
+  // const result = await Guitars.findAll({ raw: true})
+  const result = await Guitars.findAll({ 
+    raw: true,
+    attributes: ['color']
+  })
   console.log('result', result);
 }
 
