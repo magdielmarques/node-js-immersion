@@ -1,5 +1,6 @@
 // instalar orm -> npm i sequelize 
 // installar driver do banco pos -> npm i pg-hstore
+// npm install sequelize sequelize-cli pg pg-hstore
 
 const Sequelize = require('sequelize')
 const driver = new Sequelize(
