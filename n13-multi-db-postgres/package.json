@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha src/tests/postgresStrategy.test",
-    "start": "node *.test.js",
+    "start": "node *.test.js -w",
     "start:docker": "docker compose up && node src/stategy.js"
   },
   "author": "Magdiel Marques Macedo",
