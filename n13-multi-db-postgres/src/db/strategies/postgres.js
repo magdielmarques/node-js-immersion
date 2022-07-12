@@ -62,6 +62,10 @@ class PostgresDB extends ICrud {
     const { dataValues } = await this._guitars.create(item)
     return dataValues
   }
+
+  async read(item = {}) {
+    return await this._guitars.findAll({ where: item, raw: true })
+  }
 }
 
 module.exports = PostgresDB
