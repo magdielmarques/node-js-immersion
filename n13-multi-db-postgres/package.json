@@ -4,8 +4,8 @@
   "description": "A simple project to introduce strategy design patterns",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/ ./index.js",
+    "test": "mocha src/tests/postgresStrategy.test",
+    "start": "node *.test.js",
     "start:docker": "docker compose up && node src/stategy.js"
   },
   "author": "Magdiel Marques Macedo",
@@ -15,5 +15,8 @@
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.21.3",
     "sequelize-cli": "^6.4.1"
+  },
+  "devDependencies": {
+    "mocha": "^10.0.0"
   }
 }
