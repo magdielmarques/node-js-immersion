@@ -22,6 +22,10 @@ class ContextStrategy {
   isConected() {
     return this._database.isConected()
   }
+
+  connect() {
+    return this._database.connect()
+  }
 }
 
 module.exports = ContextStrategy

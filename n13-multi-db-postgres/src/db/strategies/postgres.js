@@ -5,8 +5,8 @@ class PostgresDB extends ICrud {
     super()
     this._driver = null
     this._guitars = null
-    this._connect()
   }
+
   async isConected() {
     try {
       await this._driver.authenticate()
@@ -16,8 +16,9 @@ class PostgresDB extends ICrud {
       return false;
     }
   }
+
   async defineModel() { // definindo modelo
-    this._guitars = driver.define('guitars', {
+    this._guitars = this._driver.define('guitars', {
       id: {
         type: Sequelize.INTEGER, 
         required: true, 
@@ -38,10 +39,10 @@ class PostgresDB extends ICrud {
       freezeTableName: false,
       timestamps: false 
     })
-    await Guitars.sync()
+    await this._guitars.sync()
   }
 
-  _connect() { //sinaliza metodo privado
+  async connect() { //sinaliza metodo privado
     this._driver = new Sequelize(
       'estudo', 
       'magdielmarques', 
@@ -54,11 +55,12 @@ class PostgresDB extends ICrud {
         omitNull: false 
       }
     )
-
+    await this.defineModel()
   }
 
-  create(item) {
-    console.log('Novo item criado em PostgresDB -> ', item)
+  async create(item) {
+    const { dataValues } = await this._guitars.create(item)
+    return dataValues
   }
 }
 
