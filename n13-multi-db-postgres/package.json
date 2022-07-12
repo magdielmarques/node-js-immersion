@@ -4,7 +4,7 @@
   "description": "A simple project to introduce strategy design patterns",
   "main": "index.js",
   "scripts": {
-    "test": "mocha src/tests/postgresStrategy.test",
+    "test": "mocha src/tests/*.js",
     "start": "node *.test.js -w",
     "start:docker": "docker compose up && node src/stategy.js"
   },
