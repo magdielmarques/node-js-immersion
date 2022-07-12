@@ -9,5 +9,9 @@
     "start:docker": "docker compose up && node src/stategy.js"
   },
   "author": "Magdiel Marques Macedo",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.21.3"
+  }
 }
