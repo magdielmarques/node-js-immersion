@@ -6,5 +6,5 @@ const contextMongo = new ContextStrategy(new MongoDB())
 const contextPostgres = new ContextStrategy(new PostgresDB())
 
 contextMongo.create('Magdiel')
-contextPostgres.create('Magdiel')
+// contextPostgres.create('Magdiel')
 // contextPostgres.read()
