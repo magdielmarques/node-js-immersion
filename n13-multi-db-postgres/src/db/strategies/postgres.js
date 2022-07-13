@@ -70,6 +70,11 @@ class PostgresDB extends ICrud {
   async update(id, item) {
     return await this._guitars.update(item, { where: {id : id}})    
   }
+
+  async delete(id) {
+    const query = id ? { id } : {}
+    return await this._guitars.destroy({where: query})
+  }
 }
 
 module.exports = PostgresDB
