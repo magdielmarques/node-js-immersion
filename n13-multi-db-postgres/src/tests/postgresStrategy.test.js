@@ -7,11 +7,16 @@ const MOCK_GUITAR_CREATE = {
   brand: 'TAYLOR',
   color: 'BLACK'
 } 
+const MOCK_GUITAR_UPDATE = {
+  brand: 'Taylor updated',
+  color: 'Black updated'
+}
 
 describe('Postgres Strategy', function () {
   this.timeout(Infinity) 
   this.beforeAll(async function () {
     await context.connect()
+    await context.create(MOCK_GUITAR_CREATE)
   })
   
   it('PostgresSQL Connection', async function () {
@@ -30,8 +35,20 @@ describe('Postgres Strategy', function () {
     delete result.id
     // get the first position
     // const position = result[0]
-    // ou
+    // or
     // const [position1, position2] = ['is the first', 'is the second']
     assert.deepEqual(result, MOCK_GUITAR_CREATE)
+  })
+
+  it('Should update', async function () {
+    const [itemUpdate] = await context.read({ brand: MOCK_GUITAR_CREATE.brand })
+    const newItem = {
+      ...MOCK_GUITAR_CREATE,
+      brand: 'Taylor updated'
+    }
+    const [result] = await context.update(itemUpdate.id, newItem)
+    const [itemUpdated] = await context.read({ id: itemUpdate.id })
+    assert.deepEqual(itemUpdated.brand, newItem.brand)
+    assert.deepEqual(result, 1)
   })
 })
