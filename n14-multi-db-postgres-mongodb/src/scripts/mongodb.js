@@ -21,3 +21,9 @@ db.person.insert({
   age: 24,
   color: 'Black'
 })
+
+// encontra tabelas dentro do db atual
+db.person.find()
+
+// encontra tabela e exibe bonito
+db.person.find().pretty()
