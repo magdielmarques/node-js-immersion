@@ -50,4 +50,30 @@ db.person.find().limit(5).sort({ name: -1})
 // utiliza o 1 ou 0 para sinalizar o que desejo trazer ou nao (true ou false)
 db.person.find({}, { name: 1, _id:0 })
 
+// create
+db.person.insert({
+  name: 'Magdiel',
+  age: 24,
+  color: 'Black'
+})
 
+// read
+db.person.find()
+
+// update (nesse exemplo vemos que é preciso especificar o que queremos fazer no mongo)
+// senao podemos acabar perdendo dados, igual ocorre nesse exemplo
+db.person.find({ name: 'Magdiel' }).pretty()
+db.person.update({ _id: ObjectId("62cf6fef515933199b4d1eca")}, { name: 'Magdiel Atualizado'})
+db.person.find({ name: 'Magdiel Atualizado' }).pretty()
+
+// update da forma correta
+// com o $set eu especifico o que eu quero atualizar
+// obs.: se passar o nome da chave do objeto que nao existe dentro da collection, ele vai adicionar
+// um novo atributo para minha collection
+db.person.find().pretty()
+db.person.update({ _id: ObjectId("62cf725c515933199b4d1ede") }, { $set: { name: 'Magdiel Atualizado' }})
+db.person.find({ _id: ObjectId("62cf725c515933199b4d1ede") }).pretty()
+
+// delete
+db.person.remove({}) // deleta todos da collection
+db.person.remove({ name: 'Magdiel Atualizado' })
