@@ -14,14 +14,14 @@ class MongoDB extends ICrud {
     this._driver = null
   }
   async isConected() {
-    const state = STATE[connection.readyState]
+    const state = STATE[this._driver.readyState]
     if(state === 'Conectado') return state
 
     if(state !== 'Conectando') return state
 
     await new Promise((resolve) => setTimeout(resolve, 2000))
 
-    return STATUS[connection.readyState]
+    return STATUS[this._driver.readyState]
   }
 
   defineModel() {
@@ -44,16 +44,19 @@ class MongoDB extends ICrud {
   }
 
   connect() {
+    const URI = "mongodb://localhost:27017/mongodb-estudo";
     mongoose.connect(URI, (error) => {
       if (!error) return;
       console.error("Falha na conexão! \n \n", error);
     });
     const connection = mongoose.connection;
+    this._driver = connection;
     connection.once("open", () => console.log("database rodando!"));
+
   }
 
-  create(item) {
-    return model.create({
+  async create(item) {
+    return await model.create({
       brand: "Fender",
       color: "Red",
     });
