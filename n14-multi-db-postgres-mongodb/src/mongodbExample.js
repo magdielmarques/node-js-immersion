@@ -20,7 +20,7 @@ connection.once('open', () => console.log('database rodando! \n', state))
  * 3: Desconectado
  */
 
-const guitarSchema = new Mongoose.Schema({
+const guitarSchema = new mongoose.Schema({
         brand: {
                 type: String, 
                 required: true
@@ -35,5 +35,17 @@ const guitarSchema = new Mongoose.Schema({
         }
 })
 
-const model = Mongoose.model('guitar', guitarSchema)
+const model = mongoose.model('guitar', guitarSchema)
 
+async function main() {
+        const result = await model.create({
+                brand: 'Fender',
+                color: 'Red',
+        })
+        console.log('result -> \n', result);
+
+        const listItems = await model.find()
+        console.log('listItems -> \n', listItems);
+}
+
+main()
