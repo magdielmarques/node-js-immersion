@@ -11,5 +11,12 @@ mongoose.connect(URI, error => {
                 })
 
 const connection = mongoose.connection
-connection.once('open', () => console.log('database rodando!'))
+const state = connection.readyState
+connection.once('open', () => console.log('database rodando! \n', state))
+/**
+ * 0: Desconectado
+ * 1: Conectado
+ * 2: Conectando
+ * 3: Desconectado
+ */
 
