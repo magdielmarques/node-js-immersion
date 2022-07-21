@@ -44,8 +44,13 @@ describe('MongoDB Strategy', function() {
     assert.deepEqual(result, MOCK_GUITAR_DEFAULT)
   })
 
-  it.only('Should update', async function () {
+  it('Should update', async function () {
     const result = await context.update(MOCK_GUITAR_ID, { brand: 'ATUALIZEI'})
     assert.deepEqual(result.modifiedCount, 1)
-  }) 
+  })
+  
+  it('Should delete', async function () {
+    const result = await context.delete(MOCK_GUITAR_ID)
+    assert.deepEqual(result.deletedCount, 1)
+  })
 })

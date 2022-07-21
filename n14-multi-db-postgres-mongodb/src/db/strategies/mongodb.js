@@ -66,6 +66,10 @@ class MongoDB extends ICrud {
   update(id, item) {
     return this._guitar.updateOne({ _id: id }, { $set: item })
   }
+
+  delete(id) {
+    return this._guitar.deleteOne({ _id: id })
+  }
 }
 
 module.exports = MongoDB
