@@ -12,13 +12,17 @@ const MOCK_GUITAR_DEFAULT = {
   color: 'BLACK'
 } 
 const MOCK_GUITAR_UPDATE = {
-  brand: 'Taylor updated',
-  color: 'Black updated'
+  brand: 'FENDER updated',
+  color: 'BLACK updated'
 }
+let MOCK_GUITAR_ID = ''
+
 describe('MongoDB Strategy', function() {
   this.beforeAll(async function() {
     await context.connect()
     await context.create(MOCK_GUITAR_DEFAULT)
+    const result = await context.create(MOCK_GUITAR_UPDATE)
+    MOCK_GUITAR_ID = result.id;
   })
   
   it('Verify conection', async function() {
@@ -33,10 +37,15 @@ describe('MongoDB Strategy', function() {
     assert.deepEqual({ brand, color}, MOCK_GUITAR_CREATE)
   })
 
-  it.only('Should list', async function () {
+  it('Should list', async function () {
     // const [pos1, pos2, pos3] = await context.read({ param })
     const [{brand, color}] = await context.read({ brand: MOCK_GUITAR_DEFAULT.brand })
     const result = { brand, color }
     assert.deepEqual(result, MOCK_GUITAR_DEFAULT)
   })
+
+  it.only('Should update', async function () {
+    const result = await context.update(MOCK_GUITAR_ID, { brand: 'ATUALIZEI'})
+    assert.deepEqual(result.modifiedCount, 1)
+  }) 
 })
