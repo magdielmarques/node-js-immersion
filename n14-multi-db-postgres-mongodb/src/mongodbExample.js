@@ -20,3 +20,20 @@ connection.once('open', () => console.log('database rodando! \n', state))
  * 3: Desconectado
  */
 
+const guitarSchema = new Mongoose.Schema({
+        brand: {
+                type: String, 
+                required: true
+        },
+        color: {
+                type: String, 
+                required: true
+        }, 
+        insertedAt: {
+                type: Date, 
+                default: new Date()
+        }
+})
+
+const model = Mongoose.model('guitar', guitarSchema)
+
