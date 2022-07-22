@@ -23,7 +23,7 @@ class ContextStrategy {
     return this._database.isConected()
   }
 
-  connect() {
+  static connect() {
     return this._database.connect()
   }
 }

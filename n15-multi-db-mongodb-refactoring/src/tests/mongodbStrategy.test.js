@@ -18,7 +18,7 @@ const MOCK_GUITAR_UPDATE = {
 let MOCK_GUITAR_ID = ''
 
 let context = {}
-describe('MongoDB Strategy', function() {
+describe.only('MongoDB Strategy', function() {
   this.beforeAll(async function() {
     const connection = MongoDb.connect()
     context = new Context(new MongoDb(connection, GuitarSchema))
