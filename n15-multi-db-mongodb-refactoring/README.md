@@ -6,3 +6,6 @@ npm start:docker
 
 ## ---- run project
 npm start
+
+## ---- conectar ao mongodb via cli
+docker exec -it mongodb-estudo mongo -u magdielmarques -p minhasenha --authenticationDatabase estudo

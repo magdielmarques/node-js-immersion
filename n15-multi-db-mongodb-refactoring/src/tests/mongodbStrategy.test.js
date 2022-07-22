@@ -1,8 +1,8 @@
 const assert = require('assert');
-const MongoDb = require('../db/strategies/mongodb');
+const MongoDb = require('../db/strategies/mongodb/mongodb');
+const GuitarSchema = require('./../db/strategies/mongodb/schemas/guitarSchema');
 const Context = require('../db/strategies/base/contextStrategy');
 
-const context = new Context(new MongoDb());
 const MOCK_GUITAR_CREATE = {
   brand: 'TAYLOR',
   color: 'BLACK'
@@ -17,9 +17,11 @@ const MOCK_GUITAR_UPDATE = {
 }
 let MOCK_GUITAR_ID = ''
 
+let context = {}
 describe('MongoDB Strategy', function() {
   this.beforeAll(async function() {
-    await context.connect()
+    const connection = MongoDb.connect()
+    context = new Context(new MongoDb(connection, GuitarSchema))
     await context.create(MOCK_GUITAR_DEFAULT)
     const result = await context.create(MOCK_GUITAR_UPDATE)
     MOCK_GUITAR_ID = result.id;
