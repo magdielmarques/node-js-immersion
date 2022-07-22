@@ -1,8 +1,8 @@
 const assert = require('assert');
-const Postgres = require('../db/strategies/postgres');
+const Postgres = require('../db/strategies/postgres/postgres');
+const GuitarSchema = require('./../db/strategies/postgres/schemas/guitarShema')
 const Context = require('../db/strategies/base/contextStrategy');
 
-const context = new Context(new Postgres())
 const MOCK_GUITAR_CREATE = {
   brand: 'TAYLOR',
   color: 'BLACK'
@@ -12,10 +12,13 @@ const MOCK_GUITAR_UPDATE = {
   color: 'Black updated'
 }
 
+let context = {}
 describe.only('Postgres Strategy', function () {
   this.timeout(Infinity) 
   this.beforeAll(async function () {
-    await context.connect()
+    const connection = await Postgres.connect()
+    const model = await Postgres.defineModel(connection, GuitarSchema)
+    context = new Context(new Postgres(connection, model))
     await context.delete()
     await context.create(MOCK_GUITAR_CREATE)
   })
