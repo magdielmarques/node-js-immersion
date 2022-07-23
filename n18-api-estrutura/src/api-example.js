@@ -1,7 +1,13 @@
 const Hapi = require('hapi');
+const Context = require('./db/strategies/base/contextStrategy');
+const MongoDb = require('./db/strategies/mongodb/mongodb');
+const GuitarSchema = require('./db/strategies/mongodb/schemas/guitarSchema');
 
 const main = async () => {
-    const servidor = Hapi.server({
+    const connection = MongoDb.connect()
+    const context = new Context(new MongoDb(connection, GuitarSchema))
+    
+    const servidor = Hapi.Server({
         port: 6500,
         host: 'localhost'
     });
@@ -11,7 +17,7 @@ const main = async () => {
         path: '/guitar',
         handler: (request, head) => {
 
-            return 'Hello World!';
+            return context.read();
         }
     });
 
