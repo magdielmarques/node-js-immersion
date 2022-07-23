@@ -12,7 +12,6 @@ describe.only('Suite de testes da API Guitar', function () {
       method: 'GET',
       url: '/guitar'
     })
-    console.log('Result -> \n', result.payload);
     const dados = JSON.parse(result.payload) // converte JSON em Objeto
     const statusCode = result.statusCode
 
