@@ -1,15 +1,22 @@
-// 1 - instalar hapi
-// 2 - inicializar o fw
+const Hapi = require('hapi');
 
-const Hapi = require('@hapi/hapi');
+const main = async () => {
+    const servidor = Hapi.server({
+        port: 6500,
+        host: 'localhost'
+    });
 
-const init = async () => {
+    servidor.route({
+        method: 'GET',
+        path: '/guitar',
+        handler: (request, head) => {
 
-  const server = Hapi.server({
-      port: 3000,
-      host: 'localhost'
-  });
+            return 'Hello World!';
+        }
+    });
 
-  await server.start();
-  console.log(' Server running on %s', server.info.uri);
+    await servidor.start();
+    console.log('Servidor rodando na porta %s', servidor.info.uri);
 };
+
+main();
